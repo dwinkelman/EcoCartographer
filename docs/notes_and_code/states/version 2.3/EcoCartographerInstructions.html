@@ -1,0 +1,96 @@
+<html>
+<head>
+
+<style>
+.h1 {font-size:40px; text-align:center;}
+
+#total_distance {font-size:20px;}
+#list_wrapper {width:350px; float:left;}
+#map-canvas {float:right; }
+
+</style>
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCnHT7IpJu0O7n-apLNW8iKkW_rTIuANuE"></script>
+<script>
+var map;
+window.onload = function(){
+  var hash = window.location.hash.substr(1).split('&');
+  console.log(hash);
+  for(var i=0; i<hash.length; i++){
+    var kv = hash[i].split("=");
+    var key = kv[0];
+    var value = kv[1];
+    if(key==="summary"){
+      var data = JSON.parse(unescape(value));
+      document.getElementById("total_distance_spot").innerText = data.dist;
+
+      var map_canvas = document.getElementById('map-canvas');
+      map_canvas.style.width = window.innerWidth - 450;
+      map_canvas.style.height = window.innerHeight;
+      map = new google.maps.Map(map_canvas, {center:{lat:parseFloat(data.map.center.lat), lng:parseFloat(data.map.center.lng)}, zoom:data.map.zoom});
+
+      var coords = data.path_polyline.split("|");
+      var path = coords.map(function(a){var parts = a.split(","); return new google.maps.LatLng(parseFloat(parts[0]),parseFloat(parts[1]))});
+      var polyline = new google.maps.Polyline({
+path:path,
+geodesic:true, 
+strokeColor:"#00ff00", 
+strokeOpacity:1.0, 
+strokeWeight:5});
+      polyline.setMap(map);
+      var end_marker = new google.maps.Marker({position:path[path.length-1], icon:"__end_marker__.png", title:"Destination", map:map});
+
+    }else if(key==="instructions"){
+      var data = JSON.parse(unescape(value));
+      for(var j=0; j<data.length; j++){
+        NewBlock(data[j]);
+        var marker = new google.maps.Marker({position:new google.maps.LatLng(data[j].pt.lat,data[j].pt.lng), icon:data[j].icon, title:data[j].text, map:map});
+        console.log(marker);
+      }
+    }
+  }
+}
+
+function NewBlock(a){
+  var li = document.createElement("li");
+  var div = document.createElement("div");
+
+  var icon = document.createElement("img");
+  icon.src = a.icon;
+  icon.width = 100;
+  icon.height = 100;
+
+  var turn = document.createElement("img");
+  turn.src = "";
+  turn.width = 100;
+  turn.height = 100;
+
+  var text_container = document.createElement("div");
+  var text_span = document.createElement("span");
+  var text = document.createTextNode(a.text);
+  text_span.appendChild(text);
+  text_container.appendChild(text_span);
+  div.appendChild(icon);
+  div.appendChild(turn);
+  div.appendChild(text_container);
+  div.appendChild(document.createElement("hr"));
+  li.appendChild(div);
+  document.getElementById("list").appendChild(li);
+}
+  
+</script>
+</head>
+
+<body>
+<div id="header">
+  <b><h1>Instructions</h1></b>
+  <div id="total_distance">Distance: <i><span id="total_distance_spot"></span></i></div>
+</div>
+<div id="list_wrapper">
+  <ol id="list">
+  </ol>
+</div>
+<div id="map-canvas">
+</div>
+</body>
+</html>

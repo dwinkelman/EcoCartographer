@@ -1,0 +1,11 @@
+I tried the following browsers for my application:
+
+Google Chrome (browser development took place on for quality of console) (Latest Version?): complete success.
+
+Internet Explorer (Latest Version?): initial problem with Math.hypot, which was resolved. Problem with $.ajax (because no stoplights were shown, and the script paused in the middle of the geocoding failure support script). I was not able to do further diagnostics, because I cannot enter commands into the console. I will do research on this.
+
+Firefox (Latest Version): complete success.
+
+Safari (5.1.7 Windows): I assume the same problem as Internet Explorer because of similar visual results, but there is no console for this browser.
+
+Therefore, the program as of 8:18 PM 3/10/2015 should only be run on Google Chrome and Mozilla Firefox.

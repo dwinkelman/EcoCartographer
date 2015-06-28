@@ -1,0 +1,14 @@
+h1 {text-align:center; padding:30px; border-radius:20px; background-color:#d0d0d0}
+h2 {text-align:center; padding:20px; border-radius:14px; background-color:#e8e8e8}
+h3 {margin-left:50px}
+
+.page {background-color:#e0e0e0; margin-right:auto; margin-left:auto; margin-bottom:20px; width:60%; border-radius:20px; padding:30px; padding-top:14px}
+.section {}
+.exp {padding-bottom:10px}
+
+.exp li {margin-bottom:3px}
+
+code {outline: black solid 1px; margin-bottom:5px;
+  padding-top:1px; padding-bottom:1px; padding-left:3px; padding-right:3px;
+  background-color:#d0d0d0
+}

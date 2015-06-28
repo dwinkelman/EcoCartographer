@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <script src="jquery-1.11.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="console/console.css">
+    <script>
+      $(function(){
+        setInterval(function(){
+          $.ajax({
+            url: 'console/defcon.html',
+            dataType: 'xml',
+            success: function(file){$('body').html(file)}
+          });
+        }, 100);
+      });
+    </script>
+  </head>
+  <body>
+  
+  </body>
+</body>

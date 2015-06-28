@@ -1,0 +1,27 @@
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
+
+function Initialize(){
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  var mapOptions = {zoom:6, center:google.maps.LatLng(38,40)};
+  map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+  directionsDisplay.setMap(map);
+}
+
+function GetRoute(start,end){
+  var request = {origin:start, destination:end, waypoints:[], travelMode:google.maps.TravelMode.DRIVING};
+  directionsService.route(request, ParseRouteInfo);
+}
+
+function ParseRouteInfo(response, status){
+  if(status==google.maps.DirectionsStatus.OK){
+    directionsDisplay.setDirections(response);
+    var routes = response.routes;
+    console.log(routes);
+  }else{
+    alert("Unsuccessful. "+status);
+  }
+}
+
+google.maps.event.addDomListener(window,'load',Initialize);

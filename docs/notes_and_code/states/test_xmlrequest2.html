@@ -1,0 +1,15 @@
+<html>
+<head>
+<script>
+var info;
+var request;
+function query(q){
+  request = escape(q);
+  info = new XMLHttpRequest();
+  info.open("GET", "http://overpass-api.de/api/interpreter?data="+request, true);
+  info.send();
+  var i=0;
+}
+</script>
+</head>
+</html>

@@ -1,0 +1,67 @@
+body {
+  height:100%;
+  margin:0px;
+}
+
+#php {
+  height:0px;
+  width:0px;
+  visibility:hidden;
+  border:0px;
+}
+
+.button {
+  color:#fff;
+  padding-top:1px;
+  padding-bottom:2px;
+  padding-right:5px;
+  padding-left:5px;
+  background-color:#b00;
+}
+
+#map-canvas {
+  height:100%;
+  width:50%; /*fallback for non-calc browsers*/
+  width:calc(100% - 360px);
+}
+
+#sidebar {
+  right:0px;
+  top:0px;
+  bottom:0px;
+  position:absolute;
+  max-width:350px;
+  overflow-y:scroll;
+  resize:horizontal;
+}
+
+#sidebar #size-toggle {
+  float:right;
+  background-color:#00b;
+}
+
+#input {
+  background-color:#e0e0e0;
+  height:auto;
+}
+
+#input #close-toggle {
+  float:right;
+}
+
+#input #unit-widget {
+  margin-right:3px;
+}
+
+#input #label {
+  text-align:center;
+  font-size:18px;
+  margin-left:10px;
+  padding-right:30px;
+  font-weight:bold;
+  display:inline-block;
+}
+
+#input #main-input {
+  margin-bottom:5px;
+}

@@ -1,0 +1,1 @@
+this version generates a network of intersections which can be viewed by typing "intersections" into the console. The data will be later parsed for characteristics such as distance, elevation profile, and other things in version 1.6. Afterwards, a search algorithm can finally be applied.

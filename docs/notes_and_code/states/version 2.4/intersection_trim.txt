@@ -1,0 +1,42 @@
+  function IntersectionStrip(start_index,end_index){
+    while(1){
+      var con = [];
+      for(var i=0; i<intersections.info.length; i++){
+        if(intersections.info[i]!==null){
+          if(intersections.info[i].connections.length===1 && i!==start_index && i!==end_index){
+            con.push(i);
+            intersections.info[i] = null;
+          }
+        }
+      }
+      if(con.length===0){
+        break;
+      }
+      for(var i=0; i<intersections.info.length; i++){
+        if(intersections.info[i]!==null){
+          for(var j=0; j<con.length; j++){
+            if(intersections.info[i].connections.indexOf(con[j])!==-1){
+              intersections.info[i].connections.splice(intersections.info[i].connections.indexOf(con[j]),1);
+            }
+          }
+        }
+      }
+    }
+    for(var i=0; i<intersections.info.length; i++){
+      if(intersections.info[i]!==null){
+        var spot = intersections.info.indexOf(null);
+        intersections.info[spot] = intersections.info[i];
+        intersections.info[i] = null;
+        for(var j=spot+1; j<intersections.info.length; j++){
+          if(intersections.info[j]!==null){
+            if(intersections.info[j].connections.indexOf(i)!==-1){
+              intersections.info[j].connections[intersections.info[j].connections.indexOf(i)].index = spot;
+            }
+          }
+        }
+      }
+    }
+    while(intersections.info.indexOf(null)!==-1){
+      intersections.info.splice(intersections.info.indexOf(null),1);
+    }
+  }

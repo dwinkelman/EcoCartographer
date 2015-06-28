@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!--Project: organic-reef-822-->
+
+<title>TSA Project</title>
+
+<style type="text/css">
+html, body, #map-canvas { height: 100%; margin: 30; padding: 20;}
+#start {position:absolute; top:30px; right:30px; background:#dddddd; opacity:1.0}
+#console {background:#dddddd; height:80px; width:400px; padding:20px; overflow-y:scroll;}
+#console_wrapper {position:absolute; bottom:10px; left:10px; background:#ffffff}
+</style>
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCnHT7IpJu0O7n-apLNW8iKkW_rTIuANuE"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="script.js"></script>
+<script src="overcheck.js"></script>
+<script>
+function Update(id,num,unit){document.getElementById(id).innerText = num+unit};
+function SetOpacity(id,level,mouseover){
+  var element = document.getElementById(id);
+  element.ismouseover = mouseover;
+  if(mouseover){
+    element.style.opacity = 1.0;
+  }else{
+    for(var Op=element.style.opacity; Op>=level; Op-=0.05){
+      DecreaseOpacity(element,Op,200/(Op+0.5));
+    }
+  }
+}
+        
+function DecreaseOpacity(element,level,wait){
+  setTimeout(function(){
+    if(!element.ismouseover){
+      element.style.opacity = level;
+    }
+  },wait);
+}
+
+window.onload = function(){
+  document.getElementById("start").ismouseover = false;
+}
+</script>
+</head>
+
+<body>
+<div id="map-canvas"></div>
+<div id="start" onmouseover="SetOpacity(this.id,1.0,true)" onmouseleave="SetOpacity(this.id,0,false)">
+  <span>Start Location:</span>
+  <input type="text" id="start_input" value="6936 Millbridge Rd">
+  <br>
+
+  <span>End Location:</span>
+  <input type="text" id="end_input" value="1000 N Peace Haven Road, Winston-Salem">
+  <br>
+
+  <span>Engine Efficiency <i>(Typical is about 20-25%)</i></span>
+  <br>
+  <input type="range" min="15" max="30" id="engine_efficiency" value="23" oninput="Update('engine_efficiency_disp',this.value,'%')"/>
+  <b><span id="engine_efficiency_disp">23%</span></b>
+  <br>
+
+  <span>Drag Coefficient <i>(Typical is about 0.2 to 0.3)</i></span>
+  <br>
+  <input type="range" min="0.15" max="0.4" step="0.01" id="drag_coefficient" value="0.26" oninput="Update('drag_coefficient_disp',this.value,'')"/>
+  <b><span id="drag_coefficient_disp">0.26</span></b>
+  <br>
+
+  <span>Cross-Sectional Area <i>(Typical is about 3 m^2)</i></span>
+  <br>
+  <input type="range" min="2" max="5" step="0.1" id="area" value="3" oninput="Update('area_disp',this.value,'m^2')"/>
+  <b><span id="area_disp">3 m^2</span></b>
+  <br>
+
+  <span>Mass <i>(in kilograms)</i></span>
+  <br>
+  <input type="range" min="250" max="3000" step="25" id="mass" value="1000" oninput="Update('mass_disp',this.value,'kg')"/>
+  <b><span id="mass_disp">1000 kg</span></b>
+  <br>
+
+  <button onclick="GetRouteFromInput()">Find</button>
+</div>
+
+<div id="console_wrapper">
+<b>Console</b>
+<div id="console">
+<i>Click to in upper right box to begin.</i>
+</div>
+</div>
+</body>
+</html>

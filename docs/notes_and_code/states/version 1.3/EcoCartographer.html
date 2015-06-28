@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TSA Project</title>
+
+<style type="text/css">
+html, body, #map-canvas { height: 100%; margin: 30; padding: 20;}
+#start {position:absolute; top:30px; right:200px; background:#dddddd}
+</style>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnHT7IpJu0O7n-apLNW8iKkW_rTIuANuE"></script>
+<script src="script.js"></script>
+</head>
+
+<body>
+<div id="map-canvas"></div>
+<div id="start">
+  <span>Start Location:</span>
+  <input type="text" id="start_input" value="6936 Millbridge Rd">
+  <br>
+  <span>End Location:</span>
+  <input type="text" id="end_input" value="330 Knollwood St">
+  <br>
+  <button onclick="GetRouteFromInput()">Find</button>
+</div>
+</body>
+</html>

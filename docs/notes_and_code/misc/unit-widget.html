@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <script src="unit-widget.js"></script>
+    <link rel="stylesheet" type="text/css" href="unit-widget.css">
+  <body>
+    <div id="unit-widget">
+      <form id="main-input">
+        <div id="start-div" class="item">
+          Start Location: 
+          <input type="text" name="start" id="start-input">
+          <span id="start-help" class="help">
+            <a href="input-help.html#start-input">Help?</a>
+          </span>
+        </div>
+        <div id="end-div" class="item">
+          End Location: 
+          <input type="text" name="end" id="end-input">
+          <span id="end-help" class="help">
+            <a href="input-help.html#end-input">Help?</a>
+          </span>
+        </div>
+        <div id="vehicle-div" class="item">
+          Vehicle:
+          <select id="vehicle-input" name="vehicle">
+            <option value="" id="__blank__"></option>
+            <option value="crv" id="crv">Honda CRV</option>
+          </select>
+          <span id="vehicle-help" class="help">
+            <a href="input-help.html#vehicle-input">Can't find your vehicle?</a>
+          </span>
+        </div>
+        <div id="mass-div" class="item">
+          Mass: 
+          <input type="number" class="number" name="mass" id="mass-input" min="50" step="50" size="5" value="2000">
+          <span id="mass-help" class="help">
+            <a href="input-help.html#mass-input">Help?</a>
+          </span>
+          <div class="radio-container">
+            <input type="radio" name="mass-unit" value="kg" onchange="massConvert(this.value)" checked>Kilograms
+            <input type="radio" name="mass-unit" value="lb" onchange="massConvert(this.value)">Pounds
+          </div>
+        </div>
+        <div id="drag-div" class="item">
+          Drag Coefficient: 
+          <input type="number" class="number" name="drag" id="drag-input" min="0" step="0.01" value="0.35">
+          <span id="drag-help" class="help">
+            <a href="input-help.html#drag-input">Help?</a>
+          </span>
+        </div>
+        <div id="area-div" class="item">
+          Frontal Surface Area: 
+          <input type="number" class="number" name="area" id="area-input" min="0" step="0.5" size="5" value="4">
+          <span id="area-help" class="help">
+            <a href="input-help.html#area-input">Help?</a>
+          </span>
+          <div class="radio-container">
+            <input type="radio" name="area-unit" value="m^2" onchange="areaConvert(this.value)" checked>Square meters
+            <input type="radio" name="area-unit" value="ft^2" onchange="areaConvert(this.value)">Square feet
+          </div>
+        </div>
+        <div id="disp-div" class="item">
+          Engine Displacement:
+          <input type="number" class="number" name="disp" id="disp-input" min="0" step="100" size="5" value="2000">
+          <span id="disp-help" class="help">
+            <a href="input-help.html#disp-input">Help?</a>
+          </span>
+          <div class="radio-container">
+            <input type="radio" name="disp-unit" value="cm^3" onchange="dispConvert(this.value)" checked>Cubic centimeters
+            <input type="radio" name="disp-unit" value="in^3" onchange="dispConvert(this.value)">Cubic inches
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

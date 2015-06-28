@@ -1,0 +1,48 @@
+.output {
+  font-size:15px;
+  background-color:#cccccc;
+  width:100%;
+  margin-bottom:3px;
+  max-width:500px;
+}
+
+.output table {
+  width:100%;
+}
+
+.output tr {
+  width:100%;
+}
+
+/*
+.output .icon-td {
+  width:10%;
+  min-width:30px;
+}
+
+.output .status-td {
+  width:50%;
+}
+.output .type-td {
+  width:25%;
+}*/
+
+.output .icon {
+  width:23px;
+}
+
+.output .icon-td {
+  width:25px;
+}
+
+.output .outof-td {
+  width:auto;
+}
+
+.output .success {
+  color:#008800;
+}
+
+.output .error {
+  color:#bb0000;
+}

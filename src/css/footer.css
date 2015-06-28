@@ -1,0 +1,30 @@
+body {
+  margin: 0px
+}
+
+#footer {
+  width:100%;
+  border-top: 1px solid #bbb;
+  background-color: #e6e6e6;
+  text-align:center;
+  height:100px;
+  min-height:100px;
+}
+
+#credits {
+  float:left;
+  width:50%;
+  margin-left:100px;
+  text-align:left;
+}
+
+#connect {
+  float:right;
+  width:30%;
+  margin-right:100px;
+  text-align:right;
+}
+
+.item {
+  padding-top:10px;
+}

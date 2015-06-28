@@ -1,0 +1,47 @@
+#console .output {
+  font-size:15px;
+  background-color:#ccc;
+  width:100%;
+  margin-bottom:3px;
+}
+
+#console .output table {
+  width:100%;
+}
+
+#console .output tr {
+  width:100%;
+}
+
+/*
+.output .icon-td {
+  width:10%;
+  min-width:30px;
+}
+
+.output .status-td {
+  width:50%;
+}
+.output .type-td {
+  width:25%;
+}*/
+
+#console .output .icon {
+  width:23px;
+}
+
+#console .output .icon-td {
+  width:25px;
+}
+
+#console .output .outof-td {
+  width:auto;
+}
+
+#console .output .success {
+  color:#008800;
+}
+
+#console .output .error {
+  color:#bb0000;
+}

@@ -1,0 +1,21 @@
+#unit-widget {
+}
+
+#unit-widget .item {
+  margin-bottom:2px;
+  margin-left:5px;
+}
+
+#unit-widget .help {
+  float:right;
+  margin-left:8px;
+}
+
+#unit-widget .radio-container {
+  margin-left:30px;
+  margin-bottom:6px;
+}
+
+#unit-widget .number {
+  width:60px;
+}

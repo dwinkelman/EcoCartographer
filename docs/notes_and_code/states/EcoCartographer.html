@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!--Project: organic-reef-822-->
+
+<title>TSA Project</title>
+
+<style type="text/css">
+html, body { width:100%; height: 100%; margin: 0; padding: 0;}
+
+#map-canvas {width:100%; height:100%;}
+
+#start {position:absolute; top:10px; right:10px; background:#dddddd; opacity:1.0}
+
+#console {background:#dddddd; height:80px; width:100%px; padding:20px; overflow-y:scroll;}
+#console_wrapper {position:absolute; left:10px; bottom:10px; width:50%; background:#ffffff;}
+
+#header {top:0px; margin-left:auto; margin-right:auto; text-align:center}
+#logo {height:100px}
+</style>
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCnHT7IpJu0O7n-apLNW8iKkW_rTIuANuE"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="script.js"></script>
+<script src="overcheck.js"></script>
+<script>
+function Update(id,num,unit){document.getElementById(id).innerText = num+unit};
+function SetOpacity(id,level,mouseover){
+  var element = document.getElementById(id);
+  element.ismouseover = mouseover;
+  if(mouseover){
+    element.style.opacity = 1.0;
+  }else{
+    for(var Op=element.style.opacity; Op>=level; Op-=0.05){
+      DecreaseOpacity(element,Op,200/(Op+0.5));
+    }
+  }
+}
+        
+function DecreaseOpacity(element,level,wait){
+  setTimeout(function(){
+    if(!element.ismouseover){
+      element.style.opacity = level;
+    }
+  },wait);
+}
+
+window.onload = function(){
+  document.getElementById("start").ismouseover = false;
+}
+</script>
+</head>
+
+<body>
+
+<div id="map-canvas"></div>
+
+<div id="start" onmouseover="SetOpacity(this.id,1.0,true)" onmouseleave="SetOpacity(this.id,0,false)">
+
+  <img src="icons/ecologo.png" style="width:300px"/><br>
+
+  <span>Start Location:</span>
+  <input type="text" id="start_input" value="Lowes Foods">
+  <br>
+
+  <span>End Location:</span>
+  <input type="text" id="end_input" value="Lewisville, NC">
+  <br>
+
+  <span>Drag Coefficient <i>(0.26 is a Prius)</i></span>
+  <br>
+  <input type="range" min="0.15" max="0.4" step="0.01" id="drag_coefficient" value="0.26" onchange="Update('drag_coefficient_disp',this.value,'')" oninput="Update('drag_coefficient_disp',this.value,'')"/>
+  <b><span id="drag_coefficient_disp">0.26</span></b>
+  <br>
+
+  <span>Cross-Sectional Area <i>(Typical is about 3 m^2)</i></span>
+  <br>
+  <input type="range" min="2" max="5" step="0.1" id="area" value="3" onchange="Update('area_disp',this.value,'m^2')" oninput="Update('area_disp',this.value,'m^2')"/>
+  <b><span id="area_disp">3 m^2</span></b>
+  <br>
+
+  <span>Mass <i>(in kilograms)</i></span>
+  <br>
+  <input type="range" min="500" max="4000" step="25" id="mass" value="2000" onchange="Update('mass_disp',this.value,'kg')" oninput="Update('mass_disp',this.value,'kg')"/>
+  <b><span id="mass_disp">2000 kg</span></b>
+  <br>
+
+  <button onclick="GetRouteFromInput()">Find</button>
+</div>
+
+<div id="console_wrapper" onmouseover="SetOpacity(this.id,1.0,true)" onmouseleave="SetOpacity(this.id,0,false)">
+<b>Console</b>
+<div id="console">
+<i>Click to in upper right box to begin.</i>
+</div>
+<iframe src="contact.html" style="width:100%; height:60px"></iframe>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<html>
+<head>
+
+<title>
+How To Use Ecocartographer
+</title>
+
+<style>
+h1 {text-align:center; background-color:#bbffbb; margin-top:10px; margin-bottom:20px; padding:20px;}
+h2,h4 {text-align:center; background-color:#ddffbb; margin-top:10px; margin-bottom:10px; padding:20px;}
+p {font-size:17px; width:50%; float:center; line-height:130%}
+ul {width:40%}
+
+#doc-list li {margin:0 0 10px 0; padding-left:20px; border:1px solid #000; background-color:#ddffdd;}
+#doc-list li img {margin-left:40px; border:none}
+
+#map_comp li {margin-left:10px; border:0}
+
+#disclaimers li {margin-left:30px; margin-top:10px}
+
+.code {font-size:14px; font-family:monospace; background-color:#cccccc; font-style:normal; border:1px solid #000}
+
+#contact_wrapper {bottom:0px; left:0px; width:100%}
+#contact {width:100%; height:50px}
+
+#questions {font-size:20px; background-color:#88ff88; width:100%; padding:10px; text-align:center}
+</style>
+</head>
+
+<body>
+
+<h1>How to Use EcoCartographer</h1>
+<p>
+
+<h2>End-User Documentation</h2>
+<ol id="doc-list">
+<li>
+  <h3>Data Entry: <i>Locations</i></h3>
+  <p>Enter your starting location in the top right corner box under starting location, and do the same for end location. </p>
+  <p><i>These should be as specific as possible, unique addresses, and also not more than about 10 miles apart (otherwise the algorithm will take too long to complete). An example of a good search would be: 
+    <span class="code"><b>Start Location:</b>567 Main Street, Winston-Salem, NC</span> or 
+    <span class="code"><b>End Location:</b>Lowes Foods, Pfafftown.</span>
+  </i></p>
+  <p><img src="instructions_images/input.png"></p>
+</li>
+<li>
+  <h3>Data Entry: <i>Mass</i></h3>
+  <p>Look up the <b>Mass</b> of your model of car from the manufacturers specifications. Enter that value into the appropriate slider in the input box.</p>
+  <p>In the future, there will be a drop-down menu in which you can chose a default type of vehicle with approximate values for all three types of physical data.</p>
+  <p><i>A mass is in kilograms, which is the scientific standard. One can convert pounds into kilograms by dividing the number of pounds by 2.2. Also in the future, there will be scientific and standard measurement options.</i></p>
+</li>
+<li>
+  <h3>Data Entry: <i>Frontal Area</i> and <i>Drag Coefficient</i></h3>
+  <p>Estimate the <b>Frontal Area</b> of the car, and the <b>Drag Coefficient</b>.</p>
+  <p><i>Frontal area is the amount of area covered by the front profile of your vehicle. A height of 1.5 meters and a width of 2 meters for your vehicle approximates to 1.5 * 2 meters, or 3 meters. Feet can be converted into meters by multiplying by 0.3, and inches to centimeters by multiplying by 2.5.</i></p>
+  <p><i>Drag coefficient is a quantity without a unit to determine the effect of drag on an object. Most cars are between 0.2 and 0.3; 0.2 is sleeker, 0.3 is boxier; a Prius is around 0.26.</i></p>
+  <p>A drop-down menu with approximate values for different vehicle types is being planned.</p>
+</li>
+<li>
+  <h3>Waiting</h3>
+  <p>The algorithm needs time to gather elevation and geocoding data.</p>
+  <p><i>It will typically take anywhere from about 10 seconds to about a minute for a result to be returned due to query limits.</i></p>
+</li>
+<li>
+  <h3>Output</h3>
+  <p>The output will be displayed on the map on the main page. <ul id="map_comp">
+    <li>The route is shown by the green line.</li>
+    <li>The red and green markers at the ends of the green line are the <b>start</b> and <b>end</b> points, respectively.</li>
+    <li>There are icons along the green line. These show things that happen at different points along the route. There are three types of icons: <b>stop light</b>, <b>stop sign</b>, and <b>regular <i>(blue markers)</i></b>.</li>
+    <li>Hovering the mouse over these icons will show text instructions containing the <b>type of turn</b>, <b>name of the new road</b>, and <b>distance to the next icon</b>.</li>
+  </ul></p>
+  <p>There is also a new page containing a list of the written instructions, as well as a new map with the same information as described above.</p>
+  <p>This will appear as a popup. Make sure your browser has popups for this page enabled. If it is blocked, there will usually be an icon around the area of the browser text box. In this example below, in Google Chrome, the icon with the "X" over it can be clicked and a menu will pop up. Click on the URL <span style="text-decoration:underline; color:#0000ff">underlined in blue</span> and the page will pop up in a new window. For best results, click the Maximize button for the window.</p>
+  <p><img src="instructions_images/popup.png"></p>
+  <p>This page has all of the same information described above, just in a list format. There are still the traffic light/sign icons, with the addition of turn icons. The overall distance is shown on the top.</p>
+  <p>This page is printable. Simply press <span class="code">Crtl + P</span>, and select the best options. Printing the map itself can be tricky.</p>
+</ol>
+</p>
+
+<p>
+<h2>Disclaimers</h2>
+<ul id="disclaimers">
+<li>Written instructions may not be correct, nor may be the type of intersection displayed in the icons.</li>
+<li>There may be unnecessary turns or routes.</li>
+<li>The route may contain illegal one-way road usage, or missing U-turns. Use the nearest appropriate road instead. Use your common sense.</li>
+<li>This program will generate a route to the most fuel efficent route, but this will not nessesarily be the fastest or least-distance route.</li>
+</ul>
+
+<p id="questions">
+For questions related to the function of Google maps please refer to the button listed as "Google Maps Help".
+</p>
+
+<div id="contact_wrapper">
+<iframe id="contact" src="contact.html">
+</iframe>
+</div>
+
+</body>
+</html>
